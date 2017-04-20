@@ -10,9 +10,7 @@ QLinkedList<Student> StudentsDataLayer::getData(){
     return data;
 }
 
-int StudentsDataLayer::load(){
-    QString filename = "test.dat";
-
+int StudentsDataLayer::load(QString filename = "test.dat"){
     QFile file(filename);
 
     if(!file.open(QIODevice::ReadOnly)){
@@ -40,9 +38,7 @@ int StudentsDataLayer::load(){
     return LOAD_SUCCESS;
 }
 
-int StudentsDataLayer::save(){
-    QString filename = "test.dat";
-
+int StudentsDataLayer::save(QString filename = "test.dat"){
     QFile file(filename);
 
     QFile::remove(filename);

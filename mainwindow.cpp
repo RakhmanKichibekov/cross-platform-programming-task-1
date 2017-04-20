@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QMessageBox>
 #include "studentsdatalayer.h"
+#include <QFileDialog>
 
 void MainWindow::init_headers(QLinkedList<QString> headers){
     QLinkedList<QString>::iterator iterator = headers.begin();
@@ -89,7 +90,11 @@ void MainWindow::on_tableWidget_itemSelectionChanged()
 
 void MainWindow::on_saveButton_clicked()
 {
-    int result = StudentsDataLayer::save();
+    QString filename = QFileDialog::getSaveFileName(this,
+            tr("Сохранить данные"), "",
+            tr("Файл с данными (*.dat)"));
+
+    int result = StudentsDataLayer::save(filename);
 
     if(result == 0){
         QMessageBox::information(this, "Успех!", "Список успешно сохранен.");
@@ -100,7 +105,11 @@ void MainWindow::on_saveButton_clicked()
 
 void MainWindow::on_loadButton_clicked()
 {
-    int error = StudentsDataLayer::load();
+    QString filename = QFileDialog::getOpenFileName(this,
+            tr("Загрузить данные"), "",
+            tr("Файл с данными (*.dat)"));
+
+    int error = StudentsDataLayer::load(filename);
 
     if(error == 0){
         ui->tableWidget->setRowCount(0);

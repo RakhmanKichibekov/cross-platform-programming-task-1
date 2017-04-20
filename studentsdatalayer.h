@@ -20,8 +20,8 @@ public:
 
     static QLinkedList<Student> getData();
     StudentsDataLayer();
-    static int load();
-    static int save();
+    static int load(QString filename);
+    static int save(QString filename);
     static void add(Student item);
     static void update(int row, int column, QString value);
     static int remove(int index);
