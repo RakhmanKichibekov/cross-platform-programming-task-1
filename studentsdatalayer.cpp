@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QApplication>
 #include <QTextStream>
+#include <QDataStream>
 
 QLinkedList<Student> StudentsDataLayer::data;
 
